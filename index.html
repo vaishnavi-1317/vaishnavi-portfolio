@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vaishnavi Arumugam — Founder & CEO, Codify</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --blue:#009dda;
+  --blue2:rgba(0,157,218,0.15);
+  --blue3:rgba(0,157,218,0.08);
+  --blue4:rgba(0,157,218,0.25);
+  --bg:#0e0e0e;
+  --bg2:#141414;
+  --bg3:#1a1a1a;
+  --bg4:#202020;
+  --border:rgba(255,255,255,0.07);
+  --border2:rgba(255,255,255,0.12);
+  --white:#ffffff;
+  --muted:rgba(255,255,255,0.45);
+  --muted2:rgba(255,255,255,0.65);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--white);line-height:1.6;overflow-x:hidden}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--blue);border-radius:4px}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 6%;
+  background:rgba(14,14,14,0.9);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  transition:all 0.3s;
+}
+nav.scrolled{background:rgba(14,14,14,0.97);box-shadow:0 4px 30px rgba(0,0,0,0.4)}
+.nav-brand-name{font-size:0.92rem;font-weight:800;letter-spacing:-0.02em;color:var(--white);text-decoration:none}
+.nav-links{display:flex;align-items:center;gap:0.15rem}
+.nav-links a{padding:0.45rem 0.85rem;font-size:0.8rem;font-weight:500;color:var(--muted);border-radius:7px;transition:all 0.2s}
+.nav-links a:hover{color:var(--white);background:rgba(255,255,255,0.06)}
+.nav-links .nl-cta{background:var(--blue);color:var(--white)!important;font-weight:600;margin-left:0.5rem}
+.nav-links .nl-cta:hover{background:#007fb3}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;padding:80px 6% 0;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
+  background:var(--bg);
+}
+.hero-noise{position:absolute;inset:0;opacity:0.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");pointer-events:none}
+.hero-glow{position:absolute;top:-200px;right:5%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(0,157,218,0.14) 0%,transparent 65%);pointer-events:none;animation:glowPulse 4s ease-in-out infinite}
+@keyframes glowPulse{0%,100%{opacity:0.7;transform:scale(1)}50%{opacity:1;transform:scale(1.05)}}
+.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 280px;gap:2.5rem;align-items:center;padding-bottom:3.5rem}
+.hero-status{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  border:1px solid var(--border2);border-radius:100px;
+  padding:0.38rem 1rem 0.38rem 0.5rem;
+  margin-bottom:2rem;background:rgba(255,255,255,0.03);
+  animation:fadeDown 0.6s ease both;
+}
+.hero-status-dot{width:8px;height:8px;background:#22c55e;border-radius:50%;flex-shrink:0;box-shadow:0 0 0 3px rgba(34,197,94,0.2);animation:statusPulse 2s infinite}
+@keyframes statusPulse{0%,100%{box-shadow:0 0 0 3px rgba(34,197,94,0.2)}50%{box-shadow:0 0 0 6px rgba(34,197,94,0.1)}}
+.hero-status span{font-size:0.73rem;font-weight:600;color:var(--muted2);letter-spacing:0.04em}
+.hero-name{
+  font-size:clamp(3rem,6.5vw,5.5rem);font-weight:900;
+  line-height:1.0;letter-spacing:-0.04em;color:var(--white);
+  margin-bottom:1rem;
+  animation:fadeUp 0.7s 0.1s ease both;
+}
+.hero-typed-row{display:flex;align-items:center;gap:0;min-height:1.15em;margin-bottom:1rem;animation:fadeUp 0.7s 0.15s ease both}
+.hero-typed-text{font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:700;color:var(--blue);letter-spacing:-0.01em}
+.hero-cursor{display:inline-block;width:2px;height:1.2em;background:var(--blue);margin-left:2px;vertical-align:middle;animation:cursorBlink 0.8s step-end infinite}
+@keyframes cursorBlink{0%,100%{opacity:1}50%{opacity:0}}
+.hero-tagline{font-size:1.05rem;color:var(--muted);max-width:500px;line-height:1.8;margin-bottom:2.5rem;font-weight:400;animation:fadeUp 0.7s 0.2s ease both}
+.hero-tagline strong{color:var(--muted2);font-weight:600}
+.hero-ctas{display:flex;gap:0.85rem;flex-wrap:wrap;animation:fadeUp 0.7s 0.3s ease both}
+.btn-p{display:inline-flex;align-items:center;gap:0.45rem;background:var(--blue);color:#fff;padding:0.8rem 1.75rem;border-radius:9px;font-size:0.88rem;font-weight:700;transition:all 0.22s;box-shadow:0 4px 24px rgba(0,157,218,0.3)}
+.btn-p:hover{background:#007fb3;transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,157,218,0.4)}
+.btn-g{display:inline-flex;align-items:center;gap:0.45rem;color:var(--muted2);padding:0.8rem 1.75rem;border-radius:9px;font-size:0.88rem;font-weight:600;border:1px solid var(--border2);transition:all 0.22s}
+.btn-g:hover{color:var(--white);border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.05)}
+
+/* PHOTO RIGHT */
+.hero-right{display:flex;flex-direction:column;align-items:center;gap:1.25rem;animation:fadeLeft 0.8s 0.2s ease both}
+.hero-photo-wrap{position:relative;width:300px}
+.hero-photo-ring{position:absolute;inset:-6px;border-radius:24px;border:1px solid var(--blue4);animation:ringPulse 3s ease-in-out infinite;pointer-events:none}
+@keyframes ringPulse{0%,100%{opacity:0.4;transform:scale(1)}50%{opacity:0.8;transform:scale(1.01)}}
+.hero-photo{
+  width:260px;height:320px;border-radius:20px;overflow:hidden;
+  border:1px solid var(--border2);
+  background:linear-gradient(160deg,#1a2a35 0%,#0e1e28 100%);
+  position:relative;display:flex;align-items:center;justify-content:center;
+}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-ph{text-align:center;padding:2rem}
+.photo-ph .ph-av{width:100px;height:100px;border-radius:50%;background:var(--blue2);border:2px dashed var(--blue4);display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin:0 auto 1rem}
+.photo-ph p{font-size:0.78rem;color:var(--muted);line-height:1.5}
+.photo-ph strong{color:var(--blue);display:block;margin-top:0.25rem;font-size:0.75rem}
+.photo-tag{
+  position:absolute;bottom:-14px;left:50%;transform:translateX(-50%);
+  background:var(--bg3);border:1px solid var(--border2);
+  border-radius:100px;padding:0.4rem 1rem;
+  font-size:0.73rem;font-weight:700;color:var(--white);
+  white-space:nowrap;display:flex;align-items:center;gap:0.5rem;
+  box-shadow:0 4px 20px rgba(0,0,0,0.4);
+}
+.photo-tag .pt-dot{width:7px;height:7px;background:#22c55e;border-radius:50%;animation:statusPulse 2s infinite}
+.photo-tag span{color:var(--blue)}
+.hero-mini-stats{display:flex;gap:1rem;margin-top:1.5rem}
+.hms{text-align:center;padding:0.75rem 1.1rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;min-width:80px}
+.hms-num{font-size:1.3rem;font-weight:900;color:var(--blue);letter-spacing:-0.02em}
+.hms-lbl{font-size:0.65rem;color:var(--muted);margin-top:0.1rem;font-weight:500;line-height:1.3}
+
+/* STATS BAR */
+.hero-statsbar{
+  border-top:1px solid var(--border);
+  display:grid;grid-template-columns:repeat(4,1fr);
+  position:relative;z-index:2;
+  animation:fadeUp 0.6s 0.4s ease both;
+}
+.hsb-item{padding:1.6rem 0 1.6rem 2rem;border-right:1px solid var(--border)}
+.hsb-item:last-child{border-right:none}
+.hsb-num{font-size:1.9rem;font-weight:900;color:var(--white);letter-spacing:-0.03em;line-height:1}
+.hsb-num em{color:var(--blue);font-style:normal}
+.hsb-lbl{font-size:0.72rem;color:var(--muted);margin-top:0.3rem;font-weight:500}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeLeft{from{opacity:0;transform:translateX(32px)}to{opacity:1;transform:translateX(0)}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(32px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* ── SECTION BASE ── */
+.sec{padding:6.5rem 6%}
+.sec-alt{background:var(--bg2)}
+.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--blue);margin-bottom:0.75rem;display:flex;align-items:center;gap:0.6rem}
+.sec-label::before{content:'';width:18px;height:2px;background:var(--blue);border-radius:2px}
+.sec-title{font-size:clamp(2rem,3.5vw,2.6rem);font-weight:800;letter-spacing:-0.03em;line-height:1.2;color:var(--white);margin-bottom:0.5rem}
+.sec-sub{font-size:0.95rem;color:var(--muted);max-width:540px;line-height:1.75;margin-bottom:3rem}
+
+/* ── ABOUT ── */
+#about .about-inner{max-width:780px}
+#about .about-inner p{font-size:0.97rem;color:var(--muted2);line-height:1.85;margin-bottom:1.1rem}
+#about .about-inner p strong{color:var(--white);font-weight:700}
+.about-highlights{list-style:none;display:flex;flex-direction:column;gap:0.6rem;margin:1.5rem 0}
+.about-highlights li{display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:var(--muted2);line-height:1.55}
+.about-highlights li::before{content:'→';color:var(--blue);font-weight:700;flex-shrink:0}
+.about-pills{display:flex;flex-wrap:wrap;gap:0.45rem;margin-top:1.5rem}
+.about-pill{font-size:0.75rem;font-weight:600;padding:0.35rem 0.85rem;border-radius:100px;background:var(--bg3);border:1px solid var(--border2);color:var(--muted2)}
+
+/* ── EXPERIENCE ── */
+#experience .exp-wrap{display:grid;grid-template-columns:220px 1fr;gap:3rem;margin-top:1rem}
+.exp-tabs{display:flex;flex-direction:column;gap:0.3rem;position:sticky;top:84px;align-self:start}
+.exp-tab{padding:0.9rem 1.1rem;border-radius:10px;cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.exp-tab:hover{background:var(--bg3)}
+.exp-tab.active{background:var(--bg3);border-color:var(--border2)}
+.exp-tab.active .et-title{color:var(--blue)}
+.et-title{font-size:0.84rem;font-weight:700;color:var(--muted2);margin-bottom:0.15rem;transition:color 0.2s}
+.et-co{font-size:0.72rem;color:var(--muted)}
+.exp-panel{display:none}
+.exp-panel.active{display:block}
+.exp-panel-top{margin-bottom:1.75rem}
+.exp-panel-role{font-size:1.5rem;font-weight:800;letter-spacing:-0.02em;color:var(--white);margin-bottom:0.35rem}
+.exp-panel-co{font-size:0.9rem;color:var(--blue);font-weight:600;margin-bottom:0.6rem}
+.exp-panel-co a{color:inherit}
+.exp-panel-co a:hover{text-decoration:underline}
+.exp-badge{display:inline-flex;align-items:center;gap:0.4rem;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;padding:0.28rem 0.8rem;border-radius:100px;background:var(--blue2);color:var(--blue);border:1px solid var(--blue4)}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+.exp-bullets li{display:flex;align-items:flex-start;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:11px;font-size:0.9rem;color:var(--muted2);line-height:1.65;transition:border-color 0.2s,background 0.2s}
+.exp-bullets li:hover{border-color:var(--blue4);background:var(--bg3)}
+.exp-bullets li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);margin-top:0.6rem;flex-shrink:0}
+.exp-ach{margin-top:1.5rem;padding:1.25rem 1.5rem;background:var(--bg2);border:1px solid var(--border2);border-radius:12px;border-left:3px solid var(--blue)}
+.exp-ach-title{font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:0.75rem}
+.exp-ach ul{list-style:none;display:flex;flex-direction:column;gap:0.45rem}
+.exp-ach li{font-size:0.85rem;color:var(--muted2);display:flex;align-items:flex-start;gap:0.6rem}
+.exp-ach li::before{content:'🏆';font-size:0.75rem;flex-shrink:0;margin-top:0.1rem}
+
+/* ── CODIFY ── */
+.codify-top{display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem}
+.codify-visit{display:inline-flex;align-items:center;gap:0.5rem;border:1px solid var(--border2);padding:0.6rem 1.25rem;border-radius:9px;font-size:0.82rem;font-weight:700;color:var(--muted2);transition:all 0.2s}
+.codify-visit:hover{border-color:var(--blue);color:var(--blue)}
+.codify-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:16px;overflow:hidden}
+.codify-card{background:var(--bg2);padding:2rem;transition:background 0.2s;position:relative;overflow:hidden}
+.codify-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--blue),transparent);opacity:0;transition:opacity 0.25s}
+.codify-card:hover{background:var(--bg3)}
+.codify-card:hover::before{opacity:1}
+.cc-num{font-size:0.65rem;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem;opacity:0.8}
+.cc-ico{font-size:1.75rem;margin-bottom:1rem;display:block}
+.cc-title{font-size:0.95rem;font-weight:800;color:var(--white);margin-bottom:0.5rem}
+.cc-desc{font-size:0.8rem;color:var(--muted);line-height:1.65}
+
+/* ── SKILLS ── */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem;margin-top:0.5rem}
+.skill-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:1.6rem;transition:border-color 0.2s}
+.skill-card:hover{border-color:var(--blue4)}
+.skill-card-head{display:flex;align-items:center;gap:0.75rem;margin-bottom:1.25rem}
+.sk-ico{font-size:1.1rem}
+.sk-title{font-size:0.78rem;font-weight:800;text-transform:uppercase;letter-spacing:0.08em;color:var(--white)}
+.tags{display:flex;flex-wrap:wrap;gap:0.4rem}
+.tag{font-size:0.76rem;font-weight:600;padding:0.32rem 0.78rem;border-radius:6px;transition:all 0.18s;cursor:default}
+.tag-t{background:rgba(0,157,218,0.1);color:#5cc8ec;border:1px solid rgba(0,157,218,0.2)}
+.tag-t:hover{background:var(--blue);color:#fff;border-color:var(--blue)}
+.tag-s{background:rgba(255,255,255,0.05);color:var(--muted2);border:1px solid var(--border2)}
+.tag-s:hover{background:rgba(255,255,255,0.12);color:var(--white)}
+
+/* ── CERTIFICATIONS ── */
+.cert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.1rem;margin-top:0.5rem}
+.cert-card{display:flex;align-items:flex-start;gap:1.1rem;padding:1.5rem;background:var(--bg3);border:1px solid var(--border);border-radius:14px;text-decoration:none;transition:all 0.22s}
+.cert-card:hover{border-color:var(--blue4);transform:translateY(-3px);box-shadow:0 10px 32px rgba(0,0,0,0.4)}
+.cert-icon-wrap{width:48px;height:48px;background:var(--blue2);border:1px solid var(--blue4);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.cert-name{font-size:0.92rem;font-weight:800;color:var(--white);margin-bottom:0.2rem;line-height:1.3}
+.cert-issuer{font-size:0.75rem;color:var(--blue);font-weight:600;margin-bottom:0.65rem}
+.cert-verify{display:inline-flex;align-items:center;gap:0.35rem;font-size:0.72rem;font-weight:700;color:var(--blue);background:var(--blue2);border:1px solid var(--blue4);padding:0.22rem 0.65rem;border-radius:5px}
+
+/* ── HONOURS ── */
+.honours-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:0.5rem}
+.honour-card{padding:1.6rem;background:var(--bg2);border:1px solid var(--border);border-radius:14px;transition:all 0.22s;position:relative;overflow:hidden}
+.honour-card::after{content:'';position:absolute;inset:0;border-radius:14px;background:linear-gradient(135deg,rgba(0,157,218,0.05),transparent);opacity:0;transition:opacity 0.3s}
+.honour-card:hover{border-color:var(--blue4);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,0.5)}
+.honour-card:hover::after{opacity:1}
+.h-ico{font-size:1.6rem;margin-bottom:1rem;display:block}
+.h-title{font-size:0.88rem;font-weight:800;color:var(--white);margin-bottom:0.4rem;line-height:1.35}
+.h-desc{font-size:0.79rem;color:var(--muted);line-height:1.65}
+
+/* ── EDUCATION ── */
+.edu-sec{margin-bottom:2rem}
+.edu-sec-title{font-size:0.75rem;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:var(--muted);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.6rem}
+.edu-sec-title::before{content:'';width:14px;height:1px;background:var(--muted)}
+.edu-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.1rem}
+.edu-card{background:var(--bg3);border:1px solid var(--border);border-radius:14px;padding:1.6rem;display:flex;gap:1.1rem;transition:border-color 0.2s,transform 0.2s}
+.edu-card:hover{border-color:var(--blue4);transform:translateY(-2px)}
+.edu-ico{width:44px;height:44px;background:var(--blue2);border:1px solid var(--blue4);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.edu-deg{font-size:0.92rem;font-weight:800;color:var(--white);margin-bottom:0.25rem;line-height:1.3}
+.edu-school{font-size:0.78rem;color:var(--blue);font-weight:600;margin-bottom:0.15rem}
+.edu-year{font-size:0.72rem;color:var(--muted)}
+
+/* ── CONTACT ── */
+.contact-inner{max-width:680px}
+.contact-inner p{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:0.5rem}
+.contact-inner strong{color:var(--muted2)}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem;margin-top:2rem}
+.c-link{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;transition:all 0.22s}
+.c-link:hover{border-color:var(--blue4);background:var(--bg3);transform:translateX(4px)}
+.c-link-ico{width:38px;height:38px;background:var(--blue2);border:1px solid var(--blue4);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.c-link-lbl{font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.09em;color:var(--muted);margin-bottom:0.1rem}
+.c-link-val{font-size:0.85rem;font-weight:600;color:var(--white)}
+
+/* ── FOOTER ── */
+footer{background:#0a0a0a;padding:1.5rem 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.75rem;border-top:1px solid var(--border)}
+footer p{font-size:0.75rem;color:var(--muted)}
+footer a{color:var(--blue)}
+
+@media(max-width:600px){
+  .hero-inner{grid-template-columns:1fr;gap:2.5rem}
+  .hero-right{align-items:flex-start}
+  .hero-statsbar{grid-template-columns:1fr 1fr}
+  .hsb-item{border-right:none;border-bottom:1px solid var(--border)}
+  #experience .exp-wrap{grid-template-columns:1fr;gap:2rem}
+  .exp-tabs{flex-direction:row;position:static;overflow-x:auto;padding-bottom:0.5rem}
+  .exp-tab{flex-shrink:0}
+  .codify-grid,.skills-grid,.honours-grid{grid-template-columns:1fr 1fr}
+  .nav-links a:not(.nl-cta){display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#hero" class="nav-brand-name">Vaishnavi Arumugam</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#awards">Honours</a>
+    <a href="#education">Education</a>
+    <a href="#contact" class="nl-cta">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-noise"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-status">
+        <div class="hero-status-dot"></div>
+        <span>Open to Collaborations &amp; Partnerships</span>
+      </div>
+      <div class="hero-name">Vaishnavi<br>Arumugam</div>
+      <div class="hero-typed-row">
+        <span class="hero-typed-text" id="typedRole"></span><span class="hero-cursor"></span>
+      </div>
+      <p class="hero-tagline">
+        Founder &amp; CEO of <strong>Codify</strong> — an EdTech platform built to make coding education <strong>industry-ready, inclusive, and truly transformative</strong>. Academic leader and curriculum architect with <strong>4+ years of global impact</strong> across India, UK, Australia &amp; USA.
+      </p>
+      <div class="hero-ctas">
+        <a href="#codify" class="btn-p">Explore Codify →</a>
+        <a href="#contact" class="btn-g">Get in Touch</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring"></div>
+        <div class="hero-photo">
+          <!-- TO ADD PHOTO: replace contents with <img src="YOUR_PHOTO_URL" alt="Vaishnavi Arumugam"> -->
+          <div class="photo-ph">
+            <div class="ph-av">👩‍💼</div>
+            <p>Upload your photo here</p>
+            <strong>Replace with &lt;img&gt; tag</strong>
+          </div>
+        </div>
+        <div class="photo-tag">
+          <div class="pt-dot"></div>
+          Founder &amp; <span>CEO · Codify</span>
+        </div>
+      </div>
+      <div class="hero-mini-stats">
+        <div class="hms"><div class="hms-num">7K+</div><div class="hms-lbl">Students Mentored</div></div>
+        <div class="hms"><div class="hms-num">4+</div><div class="hms-lbl">Years of Impact</div></div>
+        <div class="hms"><div class="hms-num">3</div><div class="hms-lbl">Countries</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-statsbar">
+    <div class="hsb-item"><div class="hsb-num">7K<em>+</em></div><div class="hsb-lbl">Students Mentored</div></div>
+    <div class="hsb-item"><div class="hsb-num">10<em>+</em></div><div class="hsb-lbl">Curricula Designed</div></div>
+    <div class="hsb-item"><div class="hsb-num">50<em>+</em></div><div class="hsb-lbl">International Students</div></div>
+    <div class="hsb-item"><div class="hsb-num">100<em>+</em></div><div class="hsb-lbl">Projects Delivered</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="sec sec-alt">
+  <div class="sec-label reveal">About Me</div>
+  <h2 class="sec-title reveal">Educator. Leader. Founder.</h2>
+  <div class="about-inner reveal">
+    <p style="margin-top:1.25rem">With over <strong>4 years of progressive academic leadership</strong>, I've built a reputation for designing learning experiences that go far beyond the classroom — programs that are industry-relevant, inclusive, and genuinely life-changing for students at every level.</p>
+    <p>My expertise spans curriculum architecture, faculty mentorship, and international tutoring across the <strong>UK, Australia, and the USA</strong> — giving me a uniquely global perspective on what makes education work in today's fast-moving tech landscape.</p>
+    <p>As <strong>Founder &amp; CEO of Codify</strong>, I channel that depth of experience into building an EdTech platform that redefines how aspiring developers learn, grow, and launch their careers — at scale.</p>
+    <ul class="about-highlights">
+      <li>Designed 10+ industry-aligned curricula deployed across partner schools in India</li>
+      <li>Mentored 7,000+ students through programs, hackathons &amp; personalised tutoring</li>
+      <li>Integrated Full-Stack, Data Science &amp; Blockchain into future-ready curricula</li>
+      <li>International experience: UK · Australia · USA · India</li>
+    </ul>
+    <div class="about-pills">
+      <span class="about-pill">📍 India</span>
+      <span class="about-pill">🌍 UK · AUS · USA</span>
+      <span class="about-pill">🎓 MCA · Bharathiar University</span>
+      <span class="about-pill">⚡ MERN · Full-Stack · Data Science</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="sec">
+  <div class="sec-label reveal">Professional Experience</div>
+  <h2 class="sec-title reveal">Where I've Worked</h2>
+  <p class="sec-sub reveal">Career spanning EdTech founding, academic leadership, and international education.</p>
+  <div class="exp-wrap">
+    <div class="exp-tabs reveal-left">
+      <div class="exp-tab active" onclick="showExp('codify',this)">
+        <div class="et-title">Founder &amp; CEO</div>
+        <div class="et-co">Codify · 2025–Present</div>
+      </div>
+      <div class="exp-tab" onclick="showExp('sprout',this)">
+        <div class="et-title">Academy Head</div>
+        <div class="et-co">Sprout Knowledge · 2021–2025</div>
+      </div>
+    </div>
+    <div class="reveal-right">
+      <div class="exp-panel active" id="panel-codify">
+        <div class="exp-panel-top">
+          <div class="exp-panel-role">Founder &amp; CEO</div>
+          <div class="exp-panel-co"><a href="https://www.yourcodify.com" target="_blank">Codify · yourcodify.com ↗</a></div>
+          <span class="exp-badge">October 2025 – Present</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Founded Codify with a clear mission — to democratise high-quality coding education and equip the next generation of tech professionals with skills the industry actually demands.</li>
+          <li>Directing product vision, curriculum architecture, and platform growth strategy while cultivating a global learner community from the ground up.</li>
+          <li>Applying deep expertise in instructional design and academic leadership to build scalable, outcomes-driven learning pathways spanning beginner to advanced levels.</li>
+        </ul>
+      </div>
+      <div class="exp-panel" id="panel-sprout">
+        <div class="exp-panel-top">
+          <div class="exp-panel-role">Academy Head</div>
+          <div class="exp-panel-co">Sprout Knowledge Solutions Ltd. · India</div>
+          <span class="exp-badge">October 2021 – October 2025</span>
+        </div>
+        <ul class="exp-bullets">
+          <li>Architected and launched 10+ industry-aligned curricula incorporating emerging technologies, significantly improving student employability across a network of partner schools.</li>
+          <li>Led and mentored a 5-member educator team, establishing faculty development frameworks that elevated teaching quality and measurably improved student performance.</li>
+          <li>Engaged and mentored over 7,000 students through high-impact academic programs, hackathons, and professional mentorship initiatives.</li>
+          <li>Delivered personalised 1:1 tutoring for 50+ students (Grades 2–9) across the USA and Australia, achieving consistent, measurable improvements in academic performance.</li>
+          <li>Designed a parent-student progress review system that enhanced academic accountability, transparency, and institutional satisfaction.</li>
+        </ul>
+        <div class="exp-ach">
+          <div class="exp-ach-title">🏆 Key Achievements</div>
+          <ul>
+            <li>Scaled the App Development Certification Program to 10+ schools, reaching 7,000+ students nationwide.</li>
+            <li>Built 15+ industry partnerships delivering guest lectures, hackathons &amp; mentorship programmes.</li>
+            <li>Received the Prominent Alumni Award for educational impact &amp; community leadership.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CODIFY -->
+<section id="codify" class="sec sec-alt">
+  <div class="codify-top reveal">
+    <div>
+      <div class="sec-label">Codify</div>
+      <h2 class="sec-title">Redefining How the<br>World Learns to Code.</h2>
+    </div>
+    <a href="https://www.yourcodify.com" target="_blank" class="codify-visit">Visit yourcodify.com ↗</a>
+  </div>
+  <div class="codify-grid reveal">
+    <div class="codify-card"><div class="cc-num">01</div><span class="cc-ico">💻</span><div class="cc-title">Project-Based Learning</div><div class="cc-desc">Learners build real products from day one — not just consume theory. Practical skills, real outcomes.</div></div>
+    <div class="codify-card"><div class="cc-num">02</div><span class="cc-ico">🗺️</span><div class="cc-title">Structured Career Paths</div><div class="cc-desc">Curated roadmaps guiding learners from absolute beginner to job-ready developer.</div></div>
+    <div class="codify-card"><div class="cc-num">03</div><span class="cc-ico">🌍</span><div class="cc-title">Global Reach</div><div class="cc-desc">Serving learners across India, the UK, Australia, and the United States.</div></div>
+    <div class="codify-card"><div class="cc-num">04</div><span class="cc-ico">🔗</span><div class="cc-title">Emerging Technologies</div><div class="cc-desc">Full-Stack, MERN, Data Science, Blockchain &amp; Web 3.0 — fully integrated.</div></div>
+    <div class="codify-card"><div class="cc-num">05</div><span class="cc-ico">🤝</span><div class="cc-title">Industry-Aligned</div><div class="cc-desc">Every curriculum co-designed with professionals to reflect real market demands.</div></div>
+    <div class="codify-card"><div class="cc-num">06</div><span class="cc-ico">🎯</span><div class="cc-title">Outcome-Driven</div><div class="cc-desc">Each module engineered with one goal — your next career milestone.</div></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="sec">
+  <div class="sec-label reveal">Core Competencies</div>
+  <h2 class="sec-title reveal">Technical Expertise</h2>
+  <p class="sec-sub reveal">A broad, hands-on skill set spanning software development, data, EdTech, and academic leadership.</p>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-card-head"><span class="sk-ico">⚡</span><div class="sk-title">Full-Stack &amp; Development</div></div><div class="tags"><span class="tag tag-t">Full-Stack Development</span><span class="tag tag-t">MERN Stack</span><span class="tag tag-t">React.js</span><span class="tag tag-t">Node.js</span><span class="tag tag-t">Python</span><span class="tag tag-t">Bootstrap</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-head"><span class="sk-ico">📊</span><div class="sk-title">Data &amp; Analytics</div></div><div class="tags"><span class="tag tag-t">Data Analysis</span><span class="tag tag-t">Firebase</span><span class="tag tag-t">MongoDB</span><span class="tag tag-t">Google Colab</span><span class="tag tag-t">ML Basics</span><span class="tag tag-t">Excel (AI Features)</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-head"><span class="sk-ico">🔗</span><div class="sk-title">Emerging &amp; Web 3.0</div></div><div class="tags"><span class="tag tag-t">Blockchain Fundamentals</span><span class="tag tag-t">Web 3.0</span><span class="tag tag-t">VS Code</span><span class="tag tag-t">Glitch</span><span class="tag tag-t">Canva (Certified)</span></div></div>
+    <div class="skill-card reveal"><div class="skill-card-head"><span class="sk-ico">🎓</span><div class="sk-title">Academic &amp; Leadership</div></div><div class="tags"><span class="tag tag-s">Curriculum Development</span><span class="tag tag-s">Instructional Design</span><span class="tag tag-s">Faculty Mentorship</span><span class="tag tag-s">Academic Strategy</span><span class="tag tag-s">Project-Based Learning</span><span class="tag tag-s">Programme Coordination</span><span class="tag tag-s">International Tutoring</span><span class="tag tag-s">Event Management</span></div></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications" class="sec sec-alt">
+  <div class="sec-label reveal">Certifications</div>
+  <h2 class="sec-title reveal">Professional Credentials</h2>
+  <div class="cert-grid">
+    <a class="cert-card reveal" href="https://courses.etrain.skillsnetwork.site/certificates/2e63b0e8cc234eb395c425b582f4d30c" target="_blank">
+      <div class="cert-icon-wrap">📊</div>
+      <div><div class="cert-name">Data Analysis with Python</div><div class="cert-issuer">IBM · SkillsNetwork / eTrain</div><span class="cert-verify">✓ View Credential ↗</span></div>
+    </a>
+    <div class="cert-card reveal">
+      <div class="cert-icon-wrap">🎨</div>
+      <div><div class="cert-name">Certified Canva Designer</div><div class="cert-issuer">Canva · Creative Challenge · 2025</div><span class="cert-verify">✓ Verified</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- HONOURS -->
+<section id="awards" class="sec">
+  <div class="sec-label reveal">Featured Works, Honours &amp; Achievements</div>
+  <h2 class="sec-title reveal">Recognition &amp; Engagements</h2>
+  <p class="sec-sub reveal">Highlights from academic impact, industry engagements, and professional recognition.</p>
+  <div class="honours-grid">
+    <div class="honour-card reveal"><span class="h-ico">🏆</span><div class="h-title">Curriculum Impact – App Development Program</div><div class="h-desc">Scaled a project-based certification program to 10+ schools, directly upskilling 7,000+ students nationwide.</div></div>
+    <div class="honour-card reveal"><span class="h-ico">🎤</span><div class="h-title">Guest Lecturer – Engineering Colleges</div><div class="h-desc">Invited to deliver technical workshops and industry-focused sessions at premier engineering institutions across India.</div></div>
+    <div class="honour-card reveal"><span class="h-ico">⚖️</span><div class="h-title">Judge – National Intercollegiate Fest</div><div class="h-desc">Evaluated 100+ design submissions as a subject-matter expert for a prestigious national Digital Advertising competition.</div></div>
+    <div class="honour-card reveal"><span class="h-ico">💡</span><div class="h-title">Hackathon Judge</div><div class="h-desc">Assessed capstone and hackathon projects at leading engineering colleges, guiding students toward industry-ready solutions.</div></div>
+    <div class="honour-card reveal"><span class="h-ico">🎖️</span><div class="h-title">Prominent Alumni Award</div><div class="h-desc">Honoured by VLB Janaki Ammal College for outstanding contributions to education and community leadership.</div></div>
+    <div class="honour-card reveal"><span class="h-ico">🤝</span><div class="h-title">Industry-Academia Collaborations</div><div class="h-desc">Facilitated strategic partnerships and training programs bridging academic learning with real industry expectations.</div></div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="sec sec-alt">
+  <div class="sec-label reveal">Education &amp; Credentials</div>
+  <h2 class="sec-title reveal">Qualifications</h2>
+  <div class="edu-sec reveal">
+    <div class="edu-sec-title">🎓 Degrees</div>
+    <div class="edu-cards">
+      <div class="edu-card"><div class="edu-ico">🎓</div><div><div class="edu-deg">Master of Computer Application (MCA)</div><div class="edu-school">Bharathiar University, Coimbatore</div><div class="edu-year">June 2020 – May 2022</div></div></div>
+      <div class="edu-card"><div class="edu-ico">📘</div><div><div class="edu-deg">Bachelor of Computer Technology (BCT)</div><div class="edu-school">VLB Janaki Ammal College of Arts &amp; Science</div><div class="edu-year">June 2016 – April 2019</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="sec">
+  <div class="sec-label reveal">Contact</div>
+  <h2 class="sec-title reveal">Let's build something<br>great together.</h2>
+  <div class="contact-inner reveal">
+    <p style="margin-top:1rem">I'm open to <strong>EdTech collaborations</strong>, speaking engagements, academic partnerships, or conversations about the future of coding education.</p>
+    <p>Whether it's a project, a partnership, or just a hello — <strong>I'd love to hear from you.</strong></p>
+    <div class="contact-links">
+      <a href="tel:+919384403638" class="c-link"><div class="c-link-ico">📞</div><div><div class="c-link-lbl">Call or WhatsApp</div><div class="c-link-val">+91 93844 03638</div></div></a>
+      <a href="mailto:vaishnavi.a@yourcodify.com" class="c-link"><div class="c-link-ico">✉️</div><div><div class="c-link-lbl">Send me an email</div><div class="c-link-val">vaishnavi.a@yourcodify.com</div></div></a>
+      <a href="https://www.linkedin.com/in/vaishnavi-arumugam/" target="_blank" class="c-link"><div class="c-link-ico">💼</div><div><div class="c-link-lbl">Connect on LinkedIn</div><div class="c-link-val">linkedin.com/in/vaishnavi-arumugam</div></div></a>
+      <a href="https://www.yourcodify.com" target="_blank" class="c-link"><div class="c-link-ico">🌐</div><div><div class="c-link-lbl">Website</div><div class="c-link-val">yourcodify.com</div></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Designed &amp; built for <strong style="color:rgba(255,255,255,0.7)">Vaishnavi Arumugam</strong> · <a href="https://www.yourcodify.com" target="_blank">Codify</a> · 2026</p>
+  <p>Built with purpose · Powered by education.</p>
+</footer>
+
+<script>
+// NAV SCROLL
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// TYPING ANIMATION — cursor is a separate element, no text appended
+const roles=['Founder & CEO','EdTech Innovator','Curriculum Architect','Technical Educator'];
+let ri=0,ci=0,deleting=false;
+const el=document.getElementById('typedRole');
+function type(){
+  const cur=roles[ri];
+  if(!deleting){
+    ci++;
+    el.textContent=cur.slice(0,ci);
+    if(ci===cur.length){deleting=true;setTimeout(type,1800);return;}
+  } else {
+    ci--;
+    el.textContent=cur.slice(0,ci);
+    if(ci===0){deleting=false;ri=(ri+1)%roles.length;}
+  }
+  setTimeout(type,deleting?55:90);
+}
+type();
+
+// SCROLL REVEAL
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach((el,i)=>{
+  el.style.transitionDelay=(i%4)*0.07+'s';
+  obs.observe(el);
+});
+
+// EXPERIENCE TABS
+function showExp(id,el){
+  document.querySelectorAll('.exp-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.exp-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
+</body>
+</html>
