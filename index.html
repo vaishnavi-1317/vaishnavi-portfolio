@@ -120,7 +120,7 @@ nav.scrolled{background:#ffffff;box-shadow:0 4px 30px rgba(0,0,0,0.1)}
 /* STATS BAR */
 .hero-statsbar{
   border-top:1px solid var(--border);
-  display:grid;grid-template-columns:repeat(4,1fr);
+  display:grid;grid-template-columns:repeat(6,1fr);
   position:relative;z-index:2;
   animation:fadeUp 0.6s 0.4s ease both;
 }
@@ -281,7 +281,7 @@ footer a{color:var(--blue)}
 <!-- NAV -->
 <nav id="nav">
   <a href="#hero" style="display:flex;align-items:center;gap:0.75rem;text-decoration:none">
-    <img src="Codify_trasnparent.png" alt="Codify" style="height:32px;width:auto;object-fit:contain">
+    <img src="Codify_trasnparent.png" alt="Codify" style="height:48px;width:auto;object-fit:contain">
     <span class="nav-brand-name"><span style="color:#009dda">Vaishnavi</span> <span style="color:#333333">Arumugam</span></span>
   </a>
   <div class="nav-links">
@@ -327,11 +327,7 @@ footer a{color:var(--blue)}
           Founder &amp; <span>CEO · Codify</span>
         </div>
       </div>
-      <div class="hero-mini-stats">
-        <div class="hms"><div class="hms-num">7K+</div><div class="hms-lbl">Students Mentored</div></div>
-        <div class="hms"><div class="hms-num">4+</div><div class="hms-lbl">Years of Impact</div></div>
-        <div class="hms"><div class="hms-num">3</div><div class="hms-lbl">Countries</div></div>
-      </div>
+
     </div>
   </div>
   <div class="hero-statsbar">
@@ -339,6 +335,8 @@ footer a{color:var(--blue)}
     <div class="hsb-item"><div class="hsb-num">10<em>+</em></div><div class="hsb-lbl">Curricula Designed</div></div>
     <div class="hsb-item"><div class="hsb-num">50<em>+</em></div><div class="hsb-lbl">International Students</div></div>
     <div class="hsb-item"><div class="hsb-num">100<em>+</em></div><div class="hsb-lbl">Projects Delivered</div></div>
+    <div class="hsb-item"><div class="hsb-num">4<em>+</em></div><div class="hsb-lbl">Years of Experience</div></div>
+    <div class="hsb-item"><div class="hsb-num">3</div><div class="hsb-lbl">Countries</div></div>
   </div>
 </section>
 
@@ -524,6 +522,20 @@ footer a{color:var(--blue)}
 // NAV SCROLL
 window.addEventListener('scroll',()=>{
   document.getElementById('nav').classList.toggle('scrolled',window.scrollY>40);
+});
+
+// ACTIVE NAV HIGHLIGHT ON SCROLL
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll',()=>{
+  let current='';
+  sections.forEach(sec=>{
+    if(window.scrollY>=sec.offsetTop-100) current=sec.getAttribute('id');
+  });
+  navLinks.forEach(a=>{
+    a.classList.remove('active');
+    if(a.getAttribute('href')==='#'+current) a.classList.add('active');
+  });
 });
 
 // TYPING ANIMATION — cursor is a separate element, no text appended
